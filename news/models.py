@@ -18,13 +18,13 @@ class User(models.Model):
         return f'{self.name}'
 
 
-class News(models.Model):
-    title = models.CharField(max_length=200, blank=False)
-    content = models.CharField(blank=False)
-    author = models.ForeignKey('User')
-    created_at = models.DateField(blank=False)
-    image = models.ImageField(upload_to='img/', blank=True)
-    categories = models.ForeignKey('Category')
+# class News(models.Model):
+#     title = models.CharField(max_length=200, blank=False)
+#     content = models.TextField(blank=False)
+#     author = models.ForeignKey(User, on_delete=models.CASCADE)
+#     created_at = models.DateField(blank=False)
+#     image = models.ImageField(upload_to='img/', blank=True)
+#     categories = models.ManyToManyField(Category, related_name='news')
 
-    def __str__(self) -> str:
-        return f'{self.title}'
+#     def __str__(self) -> str:
+#         return f'{self.title}'
