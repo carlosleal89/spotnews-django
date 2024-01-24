@@ -1,4 +1,5 @@
 from django.db import models
+from news.validators import validate_title
 
 
 class Category(models.Model):
@@ -18,13 +19,32 @@ class User(models.Model):
         return f'{self.name}'
 
 
-# class News(models.Model):
-#     title = models.CharField(max_length=200, blank=False)
-#     content = models.TextField(blank=False)
-#     author = models.ForeignKey(User, on_delete=models.CASCADE)
-#     created_at = models.DateField(blank=False)
-#     image = models.ImageField(upload_to='img/', blank=True)
-#     categories = models.ManyToManyField(Category, related_name='news')
+class News(models.Model):
+    title = models.CharField(
+        max_length=200,
+        blank=False,
+        validators=[validate_title]
+        )
+    content = models.TextField(blank=False)
+    author = models.ForeignKey(
+        User,
+        on_delete=models.CASCADE,
+        related_name='news'
+        )
+    created_at = models.DateField(blank=False)
+    image = models.ImageField(upload_to='img/', blank=True)
+    categories = models.ManyToManyField(
+        Category,
+        related_name='news'
+        )
 
-#     def __str__(self) -> str:
-#         return f'{self.title}'
+    def add_category(self, category):
+        self.categories.add(category)
+        self.save()
+
+    def remove_category(self, category):
+        self.categories.remove(category)
+        self.save()
+
+    def __str__(self) -> str:
+        return f'{self.title}'
