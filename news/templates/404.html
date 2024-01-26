@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Página não encontrada
+{% endblock %}
+
+{% block content %}
+    <h1> 404 - Página não encontrada </h1>
+    <h2> Desculpe, mas a notícia não foi encontrado </h2>
+    <p><a href="{% url 'home-page' %}"> Volte a página inicial </a></p>
+{% endblock %}

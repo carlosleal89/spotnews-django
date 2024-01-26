@@ -11,6 +11,7 @@
 
 {% block content %}
     {% for new in news %}
+      <a href="{% url 'news-details-page' new.id %}">
         <div>
           {% if new.image %}
             <img src="{% static new.image.url %}" alt="Imagem da noticia">
@@ -18,7 +19,8 @@
           <h2 class="news-title">{{ new.title }}</h2>
           <span class="news-date">{{ new.created_at|date:"d/m/Y" }}</span>
         </div>
+      </a>
         {% empty %}
-          <p> Não existem eventos cadastrados </p>
+          <p> Não existem noticias. </p>
     {% endfor %}
 {% endblock %}
