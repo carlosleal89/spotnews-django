@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect
 from django.shortcuts import get_object_or_404
 from django.http import Http404
 from news.models import News, Category
-from news.forms import create_categories_form
+from news.forms import CreateCategoriesForm, CreateNewsForm
 
 
 def index(request):
@@ -21,9 +21,9 @@ def news_details(request, news_id):
 
 
 def new_category_form(request):
-    form = create_categories_form()
+    form = CreateCategoriesForm()
     if request.method == "POST":
-        form = create_categories_form(request.POST)
+        form = CreateCategoriesForm(request.POST)
 
         if form.is_valid():
             Category.objects.create(**form.cleaned_data)
@@ -31,3 +31,22 @@ def new_category_form(request):
 
     context = {"form": form}
     return render(request, "categories_form.html", context)
+
+
+def create_news_form(request):
+    form = CreateNewsForm()
+    if request.method == "POST":
+        form = CreateNewsForm(request.POST)
+
+        if form.is_valid():
+            news = form.save(commit=False)
+            news.save()
+
+            selected_categories = form.cleaned_data['categories']
+
+            news.categories.set(selected_categories)
+
+            return redirect("home-page")
+
+    context = {"form": form}
+    return render(request, "news_form.html", context)
