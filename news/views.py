@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from django.shortcuts import get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
 from news.models import News, Category
 from news.forms import CreateCategoriesForm, CreateNewsForm
+from rest_framework import viewsets
+from news.serializers import CategorySerializer
 
 
 def index(request):
@@ -37,7 +38,7 @@ def create_news_form(request):
     form = CreateNewsForm()
     if request.method == "POST":
         form = CreateNewsForm(request.POST, request.FILES)
-
+        # lembrar de passar o request.FILES quando lidar com arquivos
         if form.is_valid():
             news = form.save(commit=False)
             news.save()
@@ -50,3 +51,8 @@ def create_news_form(request):
 
     context = {"form": form}
     return render(request, "news_form.html", context)
+
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
