@@ -1,9 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.http import Http404
-from news.models import News, Category
+from news.models import News, Category, User
 from news.forms import CreateCategoriesForm, CreateNewsForm
 from rest_framework import viewsets
-from news.serializers import CategorySerializer
+from news.serializers import CategorySerializer, UserSerializer
 
 
 def index(request):
@@ -56,3 +56,8 @@ def create_news_form(request):
 class CategoryViewSet(viewsets.ModelViewSet):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
