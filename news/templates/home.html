@@ -14,7 +14,7 @@
       <a href="{% url 'news-details-page' new.id %}">
         <div>
           {% if new.image %}
-            <img src="{% static new.image.url %}" alt="Imagem da noticia">
+            <img class="news-image" src="{% static new.image.url %}" alt="Imagem da noticia">
           {% endif %}
           <h2 class="news-title">{{ new.title }}</h2>
           <span class="news-date">{{ new.created_at|date:"d/m/Y" }}</span>
