@@ -37,7 +37,7 @@ input {
 
 .header {
     background-color: rgb(30,39,49);
-    position: fixed;
+    position: absolute;
     width: 100%;
 }
 
@@ -70,11 +70,11 @@ nav {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    height: 200px;
+    height: 40vh;
     justify-content: space-around;
     margin: 10px 0;
     text-align: center;
-    width: 27%;
+    width: 50vh
 }
 
 .news-card:hover {
@@ -83,7 +83,7 @@ nav {
 
 .news-card img {
     margin-top: 10px;
-    max-height: 50%;
+    max-height: 70%;
     width: 50%;
 }
 
@@ -91,8 +91,15 @@ nav {
     font-size: 14pt;
 }
 
-news-date {
+.news-date {
     font-size: 10pt;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(129, 129, 129, 0.173);
+    width: 60%;
+    border-radius: 10px;
+    margin-top: 0;
 }
 
 .news-detail {
@@ -112,24 +119,26 @@ news-date {
     width: 75%;
 }
 
-.news-detail * {
-    margin-top: 25px;
-}
-
 .news-detail img {
-    margin-top: 0;
-    width: 50%;
+    /* margin-top: 0; */
+    width: 60%;
 }
 
 .news-detail > .news-title {
     font-size: 20pt;
+    background-color: rgba(129, 129, 129, 0.173);
+    border-radius: 10px;
+    padding: 15px 0;
+    width: 60%;
+    margin-bottom: 5px;
 }
 
 .news-content {
     background-color: rgba(129, 129, 129, 0.173);
     border-radius: 10px;
-    padding: 15px;
+    padding: 15px 0;
     width: 60%;
+    margin-top: 5px;
 }
 
 .news-categories-container {
@@ -145,7 +154,21 @@ news-date {
 .news-categories {
     align-items: center;
     display: flex;
-    margin: 0;
+    justify-content: center;
+    background-color: rgba(129, 129, 129, 0.173);
+    width: 60%;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+.news-author {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    background-color: rgba(129, 129, 129, 0.173);
+    width: 60%;
+    border-radius: 10px;
+    margin: 5px;
 }
 
 .news-bottom {
@@ -182,7 +205,7 @@ news-date {
 
 #id_categories {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     flex-wrap: wrap;
 }
 
@@ -193,7 +216,7 @@ news-date {
     display: flex;
     cursor: pointer; 
     justify-content: space-between;
-    margin: 14px 0;
+    margin: 5px;
     width: 17%;
 }
 
@@ -209,6 +232,10 @@ news-date {
     width: 85%;
     padding: 0 10pt;
     word-wrap: break-word;
+}
+
+#id_author option {
+    color: black;
 }
 
 #id_image {

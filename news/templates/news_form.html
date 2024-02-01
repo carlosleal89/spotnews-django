@@ -5,15 +5,10 @@
   Formulário para Nova Notícia
 {% endblock %}
 
-{% block link %}
-  <a href="{% url 'categories-form' %}">Cadastrar Categorias</a>
-  <a href="{% url 'news-form' %}">Cadastrar Notícias</a>
-{% endblock %}
-
 {% block content %}
-  <form method="post" action="{% url 'news-form' %}" enctype="multipart/form-data">
+  <form class="news-form" method="post" action="{% url 'news-form' %}" enctype="multipart/form-data">
     {% csrf_token %}
-    {{form.as_p}}
-    <button type="submit">Salvar</button>
+    {{form}}
+    <button class="button" type="submit">Salvar</button>
   </form>
 {% endblock %}

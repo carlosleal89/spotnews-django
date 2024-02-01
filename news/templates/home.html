@@ -5,22 +5,21 @@
   Página Inicial
 {% endblock %}
 
-{% block css %}
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-{% endblock %}  
-
 {% block content %}
-    {% for new in news %}
-      <a href="{% url 'news-details-page' new.id %}">
-        <div>
-          {% if new.image %}
-            <img class="news-image" src="{% static new.image.url %}" alt="Imagem da noticia">
-          {% endif %}
-          <h2 class="news-title">{{ new.title }}</h2>
-          <span class="news-date">{{ new.created_at|date:"d/m/Y" }}</span>
-        </div>
-      </a>
-        {% empty %}
-          <p> Não existem noticias. </p>
+<main class="news-container">
+  {% for new in news %}
+    <a href="{% url 'news-details-page' new.id %}" >
+      <div class="news-card">
+        <h2 class="news-title">{{ new.title }}</h2>
+        {% if new.image %}
+        <img class="news-image" src="{% static new.image.url %}" alt="Imagem da noticia">
+        {% endif %}
+        <span class="news-date">{{ new.created_at|date:"d/m/Y" }}</span>
+      </div>
+    </a>
+    {% empty %}
+      <p>Não existem Notícias</p>
     {% endfor %}
+</main>
+
 {% endblock %}

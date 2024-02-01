@@ -1,18 +1,20 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block css %} {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <title>{% block title %} {% endblock %}</title>
 </head>
-<header class="header">
-  <ul class="header-links">
-    <a href="{% url 'home-page' %}">Home</a>
-    {% block link %} {% endblock %}
-  </ul>
-</header>
 <body>
+  <header class="header">
+    <ul class="header-links">
+      <li><a href="{% url 'home-page' %}">Home</a></li>
+      <li><a href="{% url 'categories-form' %}">Cadastrar Categorias</a></li>
+      <li><a href="{% url 'news-form' %}">Cadastrar Notícias</a></li>
+    </ul>
+  </header>
     {% block content %} {% endblock %}
 </body>
 </html>

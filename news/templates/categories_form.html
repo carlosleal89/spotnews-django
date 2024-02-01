@@ -4,14 +4,10 @@
   Formulário para Nova Categoria  
 {% endblock %}
 
-{% block link %} 
-  <a href="{% url 'categories-form' %}">Cadastrar Categorias</a>
-{% endblock %}
-
 {% block content %}
-  <form method="post" action="{% url 'categories-form' %}">
+  <form class="categories-form" method="post" action="{% url 'categories-form' %}">
     {% csrf_token %}
     {{form}}
-    <button type="submit">Salvar</button>
+    <button class="button" type="submit">Salvar</button>
   </form>
 {% endblock %}

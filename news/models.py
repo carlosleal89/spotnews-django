@@ -32,7 +32,7 @@ class News(models.Model):
         related_name='news'
         )
     created_at = models.DateField(blank=False)
-    image = models.ImageField(upload_to='img/', blank=True, null=True)
+    image = models.ImageField(upload_to='img', blank=True, null=True)
     categories = models.ManyToManyField(
         Category,
         related_name='news'
