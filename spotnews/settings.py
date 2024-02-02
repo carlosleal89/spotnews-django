@@ -136,8 +136,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 DATE_FORMAT = "d/m/Y"
 
-MEDIA_URL = "/img/"
-MEDIA_ROOT = BASE_DIR / "static"
+MEDIA_URL = "/"
+MEDIA_ROOT = BASE_DIR / "news/static"
 
 if "test" in sys.argv or "pytest" in sys.argv:
     MEDIA_URL = ""
